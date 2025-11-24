@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParcelProof - Preuve Vidéo pour Colis</title>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --secondary: #5856D6;
+            --bg: #F2F2F7;
+            --text: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 0 0 24px 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid #F2F2F7;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--secondary);
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            padding: 40px 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #000000;
+                --text: #FFFFFF;
+                --text-secondary: #8E8E93;
+                --card-bg: #1C1C1E;
+            }
+            h2 { border-bottom-color: #2C2C2E; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📦 ParcelProof</h1>
+    <div class="subtitle">Sécurisez vos envois et réceptions de colis</div>
+</header>
+
+<div class="container">
+
+    <!-- SUPPORT SECTION -->
+    <div class="card" id="support">
+        <h2>Support & Aide</h2>
+        <p>Besoin d'aide avec l'application ? Vous avez rencontré un bug ou vous avez une suggestion ?</p>
+        <p>Notre équipe est là pour vous aider.</p>
+        <a href="mailto:support@parcelproof.app" class="contact-btn">Contacter le Support</a>
+    </div>
+
+    <!-- ABONNEMENT SECTION -->
+    <div class="card" id="subscription">
+        <h2>Abonnement & Annulation</h2>
+        <p>ParcelProof propose :</p>
+        <ul>
+            <li><strong>Version gratuite</strong> : jusqu'à 3 dossiers simultanés.</li>
+            <li><strong>ParcelProof+</strong> : dossiers illimités, exports ZIP/PDF, support prioritaire.</li>
+        </ul>
+        <p><strong>Annuler ou gérer votre abonnement :</strong></p>
+        <ol>
+            <li>Ouvrez l'App Store sur votre iPhone/iPad.</li>
+            <li>Appuyez sur votre profil (en haut à droite) &gt; <em>Abonnements</em>.</li>
+            <li>Sélectionnez <em>ParcelProof</em> puis <em>Annuler l'abonnement</em>.</li>
+        </ol>
+        <p>Vous pouvez aussi utiliser le lien direct Apple : <a href="https://apps.apple.com/account/subscriptions">Gérer mes abonnements</a>.</p>
+    </div>
+
+    <!-- PRIVACY POLICY SECTION -->
+    <div class="card" id="privacy">
+        <h2>Politique de Confidentialité</h2>
+        <p><strong>Dernière mise à jour :</strong> 24 Novembre 2025</p>
+
+        <h3>1. Responsable du traitement des données</h3>
+        <p>Thomas PIQUEPAILLE<br>Bordeaux, France</p>
+        <p>Email : support@parcelproof.app</p>
+
+        <h3>2. Collecte des données</h3>
+        <p>ParcelProof est conçu pour respecter votre vie privée. <strong>Nous ne collectons aucune donnée personnelle sur nos serveurs.</strong></p>
+        <ul>
+            <li>Toutes vos vidéos, photos et dossiers sont stockés <strong>localement</strong> sur votre appareil.</li>
+            <li>Nous n'avons accès ni à vos vidéos, ni à votre caméra, ni à votre bibliothèque photo à distance.</li>
+        </ul>
+
+        <h3>3. Permissions iOS</h3>
+        <p>L'application demande les permissions suivantes pour fonctionner :</p>
+        <ul>
+            <li><strong>Caméra :</strong> Uniquement pour filmer les preuves d'emballage/déballage.</li>
+            <li><strong>Microphone :</strong> Pour enregistrer le son ambiant (optionnel) sur les vidéos.</li>
+            <li><strong>Galerie Photo :</strong> Pour sauvegarder les dossiers exportés sur votre téléphone.</li>
+        </ul>
+
+        <h3>4. Services Tiers</h3>
+        <p>Nous utilisons <strong>Apple StoreKit</strong> pour gérer les abonnements "Premium". Apple traite vos informations de paiement de manière sécurisée ; nous n'y avons pas accès.</p>
+
+        <h3>5. Suppression des données</h3>
+        <p>Puisque toutes les données sont stockées sur votre appareil, <strong>supprimer l'application supprime définitivement toutes vos données et vidéos ParcelProof</strong>. Aucune démarche supplémentaire n'est nécessaire.</p>
+        <p>Pour toute question ou demande concernant vos données, veuillez nous contacter à l'adresse indiquée ci-dessus.</p>
+    </div>
+
+    <!-- TERMS OF USE (CGU) SECTION -->
+    <div class="card" id="terms">
+        <h2>Conditions Générales d'Utilisation (CGU)</h2>
+        
+        <h3>1. Objet</h3>
+        <p>ParcelProof est un outil utilitaire permettant de créer des preuves vidéo horodatées. L'éditeur ne garantit pas l'acceptation de ces preuves par les tiers (sites marchands, transporteurs, assurances).</p>
+
+        <h3>2. Propriété Intellectuelle</h3>
+        <p>L'application ParcelProof, son contenu (textes, graphiques, logos, icônes, images, vidéos, logiciels) et sa conception sont la propriété exclusive de Thomas PIQUEPAILLE. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l'accord écrit exprès de Thomas PIQUEPAILLE.</p>
+        <p>L'utilisateur se voit concéder une licence d'utilisation non exclusive, non transférable et révocable pour l'application, dans le cadre de son usage personnel et privé.</p>
+
+        <h3>3. Responsabilité</h3>
+        <p>L'utilisateur est seul responsable du contenu qu'il filme et enregistre. ParcelProof ne peut être tenu responsable en cas de perte de données locale (panne de téléphone, désinstallation de l'application).</p>
+
+        <h3>4. Abonnements</h3>
+        <p>L'application propose un mode gratuit (limité à 3 dossiers) et un abonnement Premium (illimité). Les abonnements sont gérés par votre compte Apple ID et sont soumis aux conditions générales d'Apple Media Services.</p>
+
+        <h3>5. Droit applicable et juridiction compétente</h3>
+        <p>Les présentes Conditions Générales d'Utilisation sont régies par le droit français. En cas de litige, et après échec de toute tentative de résolution amiable, les tribunaux compétents de Bordeaux (France) seront saisis.</p>
+    </div>
+
+    <!-- LEGAL MENTIONS SECTION -->
+    <div class="card" id="legal">
+        <h2>Mentions Légales</h2>
+        <p><strong>Éditeur :</strong> Thomas PIQUEPAILLE</p>
+        <p><strong>Contact :</strong> support@parcelproof.app</p>
+        <p><strong>Adresse :</strong> Bordeaux, France</p>
+        <p><strong>Hébergeur du site :</strong> Auto-hébergé (Synology NAS)</p>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2025 ParcelProof. Tous droits réservés.
+</footer>
+
+</body>
+</html>
