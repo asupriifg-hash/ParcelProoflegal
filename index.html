@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParcelProof - Preuve Vidéo pour Colis</title>
+    <title>ParcelProof — Legal, Privacy & Support</title>
     <style>
         :root {
             --primary: #007AFF;
             --secondary: #5856D6;
             --bg: #F2F2F7;
             --text: #1C1C1E;
-            --text-secondary: #8E8E93;
+            --text-secondary: #6B7280;
             --card-bg: #FFFFFF;
         }
 
@@ -24,56 +24,73 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
 
         header {
-            text-align: center;
-            padding: 60px 20px;
+            padding: 48px 20px 32px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 0 0 24px 24px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
         }
 
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.1em;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
             margin-top: 10px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .lang-select {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-weight: 600;
         }
 
         .card {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 28px;
+            margin: 28px 0;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
         }
 
         h2 {
             color: var(--primary);
-            border-bottom: 2px solid #F2F2F7;
-            padding-bottom: 10px;
             margin-top: 0;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #E5E7EB;
+            padding-bottom: 8px;
         }
 
         h3 {
-            margin-top: 25px;
+            margin-top: 22px;
             margin-bottom: 10px;
-            font-size: 1.1em;
+            font-size: 1.05em;
         }
 
-        ul {
+        ul, ol {
             padding-left: 20px;
+            margin-top: 8px;
         }
 
         a {
@@ -89,12 +106,12 @@
             display: inline-block;
             background-color: var(--primary);
             color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
             margin-top: 10px;
-            font-weight: 600;
+            font-weight: 700;
         }
-        
+
         .contact-btn:hover {
             background-color: var(--secondary);
             text-decoration: none;
@@ -103,122 +120,643 @@
         footer {
             text-align: center;
             color: var(--text-secondary);
-            font-size: 0.9em;
+            font-size: 0.95em;
             padding: 40px 0;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #000000;
-                --text: #FFFFFF;
-                --text-secondary: #8E8E93;
-                --card-bg: #1C1C1E;
+                --bg: #0B0B0F;
+                --text: #F9FAFB;
+                --text-secondary: #9CA3AF;
+                --card-bg: #111827;
             }
-            h2 { border-bottom-color: #2C2C2E; }
+            h2 { border-bottom-color: #1F2937; }
+            .lang-select {
+                background: rgba(255,255,255,0.08);
+                border-color: rgba(255,255,255,0.25);
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>📦 ParcelProof</h1>
-    <div class="subtitle">Sécurisez vos envois et réceptions de colis</div>
+    <div class="topbar">
+        <h1 data-i18n="appName">ParcelProof</h1>
+        <select class="lang-select" id="language-switcher" aria-label="Change language">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="it">Italiano</option>
+            <option value="nl">Nederlands</option>
+            <option value="pt">Português</option>
+            <option value="ja">日本語</option>
+        </select>
+    </div>
+    <div class="subtitle" data-i18n="subtitle">Secure your parcel sends and receives with local video evidence.</div>
 </header>
 
 <div class="container">
 
-    <!-- SUPPORT SECTION -->
     <div class="card" id="support">
-        <h2>Support & Aide</h2>
-        <p>Besoin d'aide avec l'application ? Vous avez rencontré un bug ou vous avez une suggestion ?</p>
-        <p>Notre équipe est là pour vous aider.</p>
-        <a href="mailto:support@parcelproof.app" class="contact-btn">Contacter le Support</a>
+        <h2 data-i18n="support.title">Support & Help</h2>
+        <div data-i18n="support.body">
+            <p>Need help with the app, found a bug, or have a suggestion? Our team is here to help.</p>
+            <p>We answer most emails within 48 hours.</p>
+        </div>
+        <a id="support-link" href="mailto:support@parcelproof.app" class="contact-btn" data-i18n="support.cta">Contact support</a>
     </div>
 
-    <!-- ABONNEMENT SECTION -->
     <div class="card" id="subscription">
-        <h2>Abonnement & Annulation</h2>
-        <p>ParcelProof propose :</p>
-        <ul>
-            <li><strong>Version gratuite</strong> : jusqu'à 3 dossiers simultanés.</li>
-            <li><strong>ParcelProof+</strong> : dossiers illimités, exports ZIP/PDF, support prioritaire.</li>
-        </ul>
-        <p><strong>Annuler ou gérer votre abonnement :</strong></p>
-        <ol>
-            <li>Ouvrez l'App Store sur votre iPhone/iPad.</li>
-            <li>Appuyez sur votre profil (en haut à droite) &gt; <em>Abonnements</em>.</li>
-            <li>Sélectionnez <em>ParcelProof</em> puis <em>Annuler l'abonnement</em>.</li>
-        </ol>
-        <p>Vous pouvez aussi utiliser le lien direct Apple : <a href="https://apps.apple.com/account/subscriptions">Gérer mes abonnements</a>.</p>
+        <h2 data-i18n="subscription.title">Subscription & Cancellation</h2>
+        <div data-i18n="subscription.body">
+            <p><strong>Plans</strong></p>
+            <ul>
+                <li><strong>Free</strong>: up to 3 draft dossiers.</li>
+                <li><strong>ParcelProof+</strong>: unlimited dossiers, ZIP/PDF export, priority support.</li>
+            </ul>
+            <p><strong>Billing & renewals</strong> (Apple Media Services): subscriptions are charged to your Apple ID, renew automatically, and can be cancelled at least 24 hours before renewal. Manage from your Apple ID &gt; Subscriptions or directly via the Apple link.</p>
+        </div>
     </div>
 
-    <!-- PRIVACY POLICY SECTION -->
     <div class="card" id="privacy">
-        <h2>Politique de Confidentialité</h2>
-        <p><strong>Dernière mise à jour :</strong> 24 Novembre 2025</p>
-
-        <h3>1. Responsable du traitement des données</h3>
-        <p>Thomas PIQUEPAILLE<br>Bordeaux, France</p>
-        <p>Email : support@parcelproof.app</p>
-
-        <h3>2. Collecte des données</h3>
-        <p>ParcelProof est conçu pour respecter votre vie privée. <strong>Nous ne collectons aucune donnée personnelle sur nos serveurs.</strong></p>
-        <ul>
-            <li>Toutes vos vidéos, photos et dossiers sont stockés <strong>localement</strong> sur votre appareil.</li>
-            <li>Nous n'avons accès ni à vos vidéos, ni à votre caméra, ni à votre bibliothèque photo à distance.</li>
-        </ul>
-
-        <h3>3. Permissions iOS</h3>
-        <p>L'application demande les permissions suivantes pour fonctionner :</p>
-        <ul>
-            <li><strong>Caméra :</strong> Uniquement pour filmer les preuves d'emballage/déballage.</li>
-            <li><strong>Microphone :</strong> Pour enregistrer le son ambiant (optionnel) sur les vidéos.</li>
-            <li><strong>Galerie Photo :</strong> Pour sauvegarder les dossiers exportés sur votre téléphone.</li>
-        </ul>
-
-        <h3>4. Services Tiers</h3>
-        <p>Nous utilisons <strong>Apple StoreKit</strong> pour gérer les abonnements "Premium". Apple traite vos informations de paiement de manière sécurisée ; nous n'y avons pas accès.</p>
-
-        <h3>5. Suppression des données</h3>
-        <p>Puisque toutes les données sont stockées sur votre appareil, <strong>supprimer l'application supprime définitivement toutes vos données et vidéos ParcelProof</strong>. Aucune démarche supplémentaire n'est nécessaire.</p>
-        <p>Pour toute question ou demande concernant vos données, veuillez nous contacter à l'adresse indiquée ci-dessus.</p>
+        <h2 data-i18n="privacy.title">Privacy Policy</h2>
+        <div data-i18n="privacy.body">
+            <p><strong>Last updated:</strong> 27 November 2025</p>
+            <p>Local-first: videos and dossiers stay on your device. Permissions: camera, microphone (optional), photo/files for export. StoreKit handles payments. Delete the app to remove local data.</p>
+        </div>
     </div>
 
-    <!-- TERMS OF USE (CGU) SECTION -->
     <div class="card" id="terms">
-        <h2>Conditions Générales d'Utilisation (CGU)</h2>
-        
-        <h3>1. Objet</h3>
-        <p>ParcelProof est un outil utilitaire permettant de créer des preuves vidéo horodatées. L'éditeur ne garantit pas l'acceptation de ces preuves par les tiers (sites marchands, transporteurs, assurances).</p>
-
-        <h3>2. Propriété Intellectuelle</h3>
-        <p>L'application ParcelProof, son contenu (textes, graphiques, logos, icônes, images, vidéos, logiciels) et sa conception sont la propriété exclusive de Thomas PIQUEPAILLE. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l'accord écrit exprès de Thomas PIQUEPAILLE.</p>
-        <p>L'utilisateur se voit concéder une licence d'utilisation non exclusive, non transférable et révocable pour l'application, dans le cadre de son usage personnel et privé.</p>
-
-        <h3>3. Responsabilité</h3>
-        <p>L'utilisateur est seul responsable du contenu qu'il filme et enregistre. ParcelProof ne peut être tenu responsable en cas de perte de données locale (panne de téléphone, désinstallation de l'application).</p>
-
-        <h3>4. Abonnements</h3>
-        <p>L'application propose un mode gratuit (limité à 3 dossiers) et un abonnement Premium (illimité). Les abonnements sont gérés par votre compte Apple ID et sont soumis aux conditions générales d'Apple Media Services.</p>
-
-        <h3>5. Droit applicable et juridiction compétente</h3>
-        <p>Les présentes Conditions Générales d'Utilisation sont régies par le droit français. En cas de litige, et après échec de toute tentative de résolution amiable, les tribunaux compétents de Bordeaux (France) seront saisis.</p>
+        <h2 data-i18n="terms.title">Terms of Use (EULA)</h2>
+        <div data-i18n="terms.body">
+            <p>Licensed under Apple Standard EULA; also subject to Apple Media Services Terms. Evidence acceptance is not guaranteed. You are responsible for recorded content. French law, courts of Bordeaux.</p>
+        </div>
     </div>
 
-    <!-- LEGAL MENTIONS SECTION -->
     <div class="card" id="legal">
-        <h2>Mentions Légales</h2>
-        <p><strong>Éditeur :</strong> Thomas PIQUEPAILLE</p>
-        <p><strong>Contact :</strong> support@parcelproof.app</p>
-        <p><strong>Adresse :</strong> Bordeaux, France</p>
-        <p><strong>Hébergeur du site :</strong> Auto-hébergé (Synology NAS)</p>
+        <h2 data-i18n="legal.title">Legal Notice</h2>
+        <div data-i18n="legal.body">
+            <p><strong>Publisher:</strong> Thomas PIQUEPAILLE — Bordeaux, France. <strong>Contact:</strong> support@parcelproof.app. <strong>Hosting:</strong> Self-hosted (Synology NAS).</p>
+        </div>
     </div>
 
 </div>
 
-<footer>
-    &copy; 2025 ParcelProof. Tous droits réservés.
+<footer data-i18n="footer">
+    © 2025 ParcelProof. All rights reserved.
 </footer>
+
+<script>
+const manageLink = "https://apps.apple.com/account/subscriptions";
+const appleEula = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/";
+const appleMinterms = "https://www.apple.com/legal/internet-services/itunes/dev/minterms/";
+const supportMail = "mailto:support@parcelproof.app";
+
+const translations = {
+    en: {
+        appName: "ParcelProof",
+        subtitle: "Secure your parcel sends and receives with local video evidence.",
+        support: {
+            title: "Support & Help",
+            body: `<p>Need help with the app, found a bug, or have a suggestion? Our team is here to help.</p>
+                   <p>We answer most emails within 48 hours.</p>`,
+            cta: "Contact support"
+        },
+        subscription: {
+            title: "Subscription & Cancellation",
+            body: `<p><strong>Plans</strong></p>
+                   <ul>
+                        <li><strong>Free</strong>: up to 3 draft dossiers.</li>
+                        <li><strong>ParcelProof+</strong>: unlimited dossiers, ZIP/PDF export, priority support.</li>
+                   </ul>
+                   <p><strong>Billing & renewals</strong> (Apple Media Services): subscriptions are charged to your Apple ID, renew automatically, and can be cancelled at least 24 hours before renewal. Manage from your Apple ID &gt; Subscriptions or directly via <a href="${manageLink}">this Apple link</a>.</p>
+                   <ol>
+                        <li>Open the App Store on your iPhone/iPad.</li>
+                        <li>Tap your profile (top right) &gt; <em>Subscriptions</em>.</li>
+                        <li>Select <em>ParcelProof</em> then choose <em>Cancel</em> or change plan.</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "Privacy Policy",
+            body: `<p><strong>Last updated:</strong> 27 November 2025</p>
+                   <h3>Data controller</h3>
+                   <p>Thomas PIQUEPAILLE — Bordeaux, France<br>Email: support@parcelproof.app</p>
+                   <h3>Local-first design</h3>
+                   <p>We do not collect personal data on our servers. Videos, photos, and dossiers stay locally on your device.</p>
+                   <h3>Permissions</h3>
+                   <ul>
+                        <li><strong>Camera:</strong> record packaging/unboxing evidence.</li>
+                        <li><strong>Microphone:</strong> capture ambient audio (optional).</li>
+                        <li><strong>Photo Library / Files:</strong> only when you export or save dossiers.</li>
+                   </ul>
+                   <h3>Third-party services</h3>
+                   <p>We use <strong>Apple StoreKit</strong> for purchases and follow Apple’s security and privacy rules.</p>
+                   <h3>Data deletion</h3>
+                   <p>Deleting the app removes all ParcelProof data stored on the device. You can also delete dossiers in-app or clear space from Settings.</p>`
+        },
+        terms: {
+            title: "Terms of Use (EULA)",
+            body: `<h3>Purpose</h3>
+                   <p>ParcelProof provides timestamped evidence capture for shipments. Acceptance of evidence by carriers or marketplaces is not guaranteed.</p>
+                   <h3>License</h3>
+                   <p>The app is licensed to you under the <a href="${appleEula}">Apple Standard End User License Agreement</a>. Your use is also subject to the <a href="${appleMinterms}">Apple Media Services Terms</a>.</p>
+                   <h3>Liability</h3>
+                   <p>You are responsible for the content you record. The developer is not liable for loss of local data (device failure, deletion).</p>
+                   <h3>Subscriptions</h3>
+                   <p>Subscriptions are billed via Apple. Auto-renewal may be disabled in your Apple ID settings at least 24 hours before renewal.</p>
+                   <h3>Governing law</h3>
+                   <p>French law applies. Courts of Bordeaux (France) have jurisdiction in case of dispute.</p>`
+        },
+        legal: {
+            title: "Legal Notice",
+            body: `<p><strong>Publisher:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Contact:</strong> support@parcelproof.app</p>
+                   <p><strong>Address:</strong> Bordeaux, France</p>
+                   <p><strong>Hosting:</strong> Self-hosted (Synology NAS)</p>`
+        },
+        footer: "© 2025 ParcelProof. All rights reserved."
+    },
+    fr: {
+        appName: "ParcelProof",
+        subtitle: "Sécurisez vos envois et réceptions avec des preuves vidéo locales.",
+        support: {
+            title: "Support & Aide",
+            body: `<p>Besoin d'aide avec l'application ? Vous avez rencontré un bug ou vous avez une suggestion ? Notre équipe est là pour vous aider.</p>
+                   <p>Nous répondons à la plupart des emails sous 48h.</p>`,
+            cta: "Contacter le support"
+        },
+        subscription: {
+            title: "Abonnement & Annulation",
+            body: `<p><strong>ParcelProof propose :</strong></p>
+                   <ul>
+                        <li><strong>Version gratuite</strong> : jusqu'à 3 dossiers simultanés.</li>
+                        <li><strong>ParcelProof+</strong> : dossiers illimités, exports ZIP/PDF, support prioritaire.</li>
+                   </ul>
+                   <p><strong>Annuler ou gérer votre abonnement :</strong></p>
+                   <ol>
+                        <li>Ouvrez l'App Store sur votre iPhone/iPad.</li>
+                        <li>Appuyez sur votre profil (en haut à droite) &gt; <em>Abonnements</em>.</li>
+                        <li>Sélectionnez <em>ParcelProof</em> puis <em>Annuler l'abonnement</em>.</li>
+                   </ol>
+                   <p>Vous pouvez aussi utiliser le lien direct Apple : <a href="${manageLink}">Gérer mes abonnements</a>.</p>
+                   <p><em>Facturation & renouvellement :</em> via votre identifiant Apple, avec renouvellement automatique. Annulez au moins 24 h avant la fin de la période. Conditions Apple Media Services applicables.</p>`
+        },
+        privacy: {
+            title: "Politique de Confidentialité",
+            body: `<p><strong>Dernière mise à jour :</strong> 24 novembre 2025</p>
+                   <h3>1. Responsable du traitement des données</h3>
+                   <p>Thomas PIQUEPAILLE — Bordeaux, France<br>Email : support@parcelproof.app</p>
+                   <h3>2. Collecte des données</h3>
+                   <p>ParcelProof est conçu pour respecter votre vie privée. Nous ne collectons aucune donnée personnelle sur nos serveurs.</p>
+                   <ul>
+                        <li>Toutes vos vidéos, photos et dossiers sont stockés localement sur votre appareil.</li>
+                        <li>Nous n'avons accès ni à vos vidéos, ni à votre caméra, ni à votre bibliothèque photo à distance.</li>
+                   </ul>
+                   <h3>3. Permissions iOS</h3>
+                   <ul>
+                        <li><strong>Caméra :</strong> filmer les preuves d'emballage/déballage.</li>
+                        <li><strong>Microphone :</strong> son ambiant (optionnel) sur les vidéos.</li>
+                        <li><strong>Galerie Photo / Fichiers :</strong> pour sauvegarder ou exporter les dossiers.</li>
+                   </ul>
+                   <h3>4. Services Tiers</h3>
+                   <p>Nous utilisons <strong>Apple StoreKit</strong> pour gérer les abonnements Premium. Apple traite vos informations de paiement ; nous n'y avons pas accès.</p>
+                   <h3>5. Suppression des données</h3>
+                   <p>Toutes les données sont locales : supprimer l'application supprime définitivement vos données ParcelProof. Vous pouvez aussi supprimer des dossiers depuis l'app.</p>`
+        },
+        terms: {
+            title: "Conditions d'Utilisation (EULA)",
+            body: `<p>L'application est soumise à la <a href="${appleEula}">licence standard d'utilisateur final Apple</a> et aux <a href="${appleMinterms}">Conditions Apple Media Services</a>.</p>
+                   <h3>1. Objet</h3>
+                   <p>ParcelProof est un outil utilitaire permettant de créer des preuves vidéo horodatées. L'éditeur ne garantit pas l'acceptation de ces preuves par les tiers (sites marchands, transporteurs, assurances).</p>
+                   <h3>2. Propriété Intellectuelle</h3>
+                   <p>L'application, son contenu et sa conception sont la propriété exclusive de Thomas PIQUEPAILLE. Toute reproduction ou modification est interdite sans accord écrit.</p>
+                   <h3>3. Responsabilité</h3>
+                   <p>L'utilisateur est seul responsable du contenu filmé. ParcelProof n'est pas responsable en cas de perte de données locale (panne, désinstallation).</p>
+                   <h3>4. Abonnements</h3>
+                   <p>Mode gratuit (limité à 3 dossiers) et abonnement Premium (illimité). Les abonnements sont gérés par votre Apple ID et soumis aux conditions Apple Media Services.</p>
+                   <h3>5. Droit applicable et juridiction</h3>
+                   <p>Droit français. Tribunaux compétents : Bordeaux (France).</p>`
+        },
+        legal: {
+            title: "Mentions Légales",
+            body: `<p><strong>Éditeur :</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Contact :</strong> support@parcelproof.app</p>
+                   <p><strong>Adresse :</strong> Bordeaux, France</p>
+                   <p><strong>Hébergement :</strong> Auto-hébergé (NAS Synology)</p>`
+        },
+        footer: "© 2025 ParcelProof. Tous droits réservés."
+    },
+    de: {
+        appName: "ParcelProof",
+        subtitle: "Sichern Sie Sendungen und Empfang mit lokalen Videobeweisen.",
+        support: {
+            title: "Support & Hilfe",
+            body: `<p>Brauchen Sie Hilfe, haben Sie einen Fehler gefunden oder einen Wunsch? Wir sind für Sie da.</p>
+                   <p>Antwort in der Regel innerhalb von 48 Stunden.</p>`,
+            cta: "Support kontaktieren"
+        },
+        subscription: {
+            title: "Abonnement & Kündigung",
+            body: `<p><strong>Pläne</strong></p>
+                   <ul>
+                        <li><strong>Kostenlos</strong>: bis zu 3 Entwürfe.</li>
+                        <li><strong>ParcelProof+</strong>: unbegrenzte Dossiers, ZIP/PDF-Export, Prioritäts-Support.</li>
+                   </ul>
+                   <p><strong>Abrechnung & Verlängerung</strong> (Apple Media Services): Abos werden über Ihre Apple-ID berechnet, verlängern sich automatisch und können bis 24 Std. vor Ablauf gekündigt werden. Verwalten Sie dies unter Apple-ID &gt; Abonnements oder über <a href="${manageLink}">diesen Apple-Link</a>.</p>
+                   <ol>
+                        <li>Öffnen Sie den App Store auf iPhone/iPad.</li>
+                        <li>Profil (oben rechts) &gt; <em>Abonnements</em>.</li>
+                        <li><em>ParcelProof</em> wählen und <em>Kündigen</em> oder Plan ändern.</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "Datenschutz",
+            body: `<p><strong>Letzte Aktualisierung:</strong> 27. November 2025</p>
+                   <h3>Verantwortlicher</h3>
+                   <p>Thomas PIQUEPAILLE — Bordeaux, Frankreich<br>Email: support@parcelproof.app</p>
+                   <h3>Local-first</h3>
+                   <p>Wir sammeln keine persönlichen Daten auf Servern. Videos und Dossiers bleiben lokal auf Ihrem Gerät.</p>
+                   <h3>Berechtigungen</h3>
+                   <ul>
+                        <li><strong>Kamera:</strong> Beweisaufnahmen.</li>
+                        <li><strong>Mikrofon:</strong> optionales Audio.</li>
+                        <li><strong>Fotos / Dateien:</strong> nur beim Export oder Speichern.</li>
+                   </ul>
+                   <h3>Drittanbieter</h3>
+                   <p>Wir nutzen <strong>Apple StoreKit</strong> für Käufe gemäß Apples Sicherheits- und Datenschutzvorgaben.</p>
+                   <h3>Datenlöschung</h3>
+                   <p>Das Löschen der App entfernt alle ParcelProof-Daten vom Gerät. Dossiers können auch in der App gelöscht werden.</p>`
+        },
+        terms: {
+            title: "Nutzungsbedingungen (EULA)",
+            body: `<h3>Zweck</h3>
+                   <p>ParcelProof erstellt zeitgestempelte Nachweise. Eine Anerkennung durch Dritte kann nicht garantiert werden.</p>
+                   <h3>Lizenz</h3>
+                   <p>Die App unterliegt der <a href="${appleEula}">Apple Standard-EULA</a>. Ihre Nutzung unterliegt außerdem den <a href="${appleMinterms}">Apple Media Services-Bedingungen</a>.</p>
+                   <h3>Haftung</h3>
+                   <p>Sie sind für Ihre Aufnahmen verantwortlich. Keine Haftung bei lokalem Datenverlust.</p>
+                   <h3>Abonnements</h3>
+                   <p>Abos werden über Apple abgerechnet. Automatische Verlängerung kann mindestens 24 Std. vor Ablauf deaktiviert werden.</p>
+                   <h3>Recht</h3>
+                   <p>Anwendbar ist französisches Recht, Gerichtsstand Bordeaux.</p>`
+        },
+        legal: {
+            title: "Impressum",
+            body: `<p><strong>Herausgeber:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Kontakt:</strong> support@parcelproof.app</p>
+                   <p><strong>Adresse:</strong> Bordeaux, Frankreich</p>
+                   <p><strong>Hosting:</strong> Selbst gehostet (Synology NAS)</p>`
+        },
+        footer: "© 2025 ParcelProof. Alle Rechte vorbehalten."
+    },
+    es: {
+        appName: "ParcelProof",
+        subtitle: "Asegure sus envíos y recepciones con pruebas de vídeo locales.",
+        support: {
+            title: "Soporte y Ayuda",
+            body: `<p>¿Necesita ayuda, encontró un error o tiene una sugerencia? Estamos para ayudarle.</p>
+                   <p>Respondemos la mayoría de los correos en 48 h.</p>`,
+            cta: "Contactar soporte"
+        },
+        subscription: {
+            title: "Suscripción y Cancelación",
+            body: `<p><strong>Planes</strong></p>
+                   <ul>
+                        <li><strong>Gratis</strong>: hasta 3 expedientes en borrador.</li>
+                        <li><strong>ParcelProof+</strong>: expedientes ilimitados, exportación ZIP/PDF, soporte prioritario.</li>
+                   </ul>
+                   <p><strong>Cobro y renovación</strong> (Apple Media Services): las suscripciones se cargan a su Apple ID, se renuevan automáticamente y pueden cancelarse al menos 24 h antes de la renovación. Gestione desde Apple ID &gt; Suscripciones o mediante <a href="${manageLink}">este enlace de Apple</a>.</p>
+                   <ol>
+                        <li>Abra App Store en su iPhone/iPad.</li>
+                        <li>Perfil (arriba derecha) &gt; <em>Suscripciones</em>.</li>
+                        <li>Seleccione <em>ParcelProof</em> y elija <em>Cancelar</em> o cambiar plan.</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "Política de Privacidad",
+            body: `<p><strong>Última actualización:</strong> 27 de noviembre de 2025</p>
+                   <h3>Responsable</h3>
+                   <p>Thomas PIQUEPAILLE — Burdeos, Francia<br>Email: support@parcelproof.app</p>
+                   <h3>Diseño local-first</h3>
+                   <p>No recopilamos datos en servidores. Los vídeos y expedientes permanecen en su dispositivo.</p>
+                   <h3>Permisos</h3>
+                   <ul>
+                        <li><strong>Cámara:</strong> grabar pruebas.</li>
+                        <li><strong>Micrófono:</strong> audio opcional.</li>
+                        <li><strong>Fotos / Archivos:</strong> solo al exportar o guardar.</li>
+                   </ul>
+                   <h3>Servicios de terceros</h3>
+                   <p>Usamos <strong>Apple StoreKit</strong> para pagos siguiendo las normas de Apple.</p>
+                   <h3>Eliminación de datos</h3>
+                   <p>Al borrar la app se eliminan todos los datos de ParcelProof del dispositivo. También puede borrar expedientes en la app.</p>`
+        },
+        terms: {
+            title: "Términos de Uso (EULA)",
+            body: `<h3>Objeto</h3>
+                   <p>ParcelProof ofrece capturas con sello de tiempo. No garantizamos su aceptación por terceros.</p>
+                   <h3>Licencia</h3>
+                   <p>La app está sujeta a la <a href="${appleEula}">EULA estándar de Apple</a> y a los <a href="${appleMinterms}">Términos de Servicios Multimedia de Apple</a>.</p>
+                   <h3>Responsabilidad</h3>
+                   <p>Usted es responsable de su contenido. No asumimos responsabilidad por pérdida de datos locales.</p>
+                   <h3>Suscripciones</h3>
+                   <p>Facturación vía Apple. Desactive la renovación automática al menos 24 h antes del vencimiento.</p>
+                   <h3>Ley aplicable</h3>
+                   <p>Ley francesa. Jurisdicción: Burdeos.</p>`
+        },
+        legal: {
+            title: "Aviso Legal",
+            body: `<p><strong>Editor:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Contacto:</strong> support@parcelproof.app</p>
+                   <p><strong>Dirección:</strong> Burdeos, Francia</p>
+                   <p><strong>Alojamiento:</strong> Autoalojado (NAS Synology)</p>`
+        },
+        footer: "© 2025 ParcelProof. Todos los derechos reservados."
+    },
+    it: {
+        appName: "ParcelProof",
+        subtitle: "Proteggi spedizioni e consegne con prove video locali.",
+        support: {
+            title: "Supporto & Aiuto",
+            body: `<p>Serve aiuto, hai trovato un bug o un suggerimento? Siamo qui.</p>
+                   <p>Rispondiamo di solito entro 48 ore.</p>`,
+            cta: "Contatta il supporto"
+        },
+        subscription: {
+            title: "Abbonamento e Disdetta",
+            body: `<p><strong>Piani</strong></p>
+                   <ul>
+                        <li><strong>Gratuito</strong>: fino a 3 dossier in bozza.</li>
+                        <li><strong>ParcelProof+</strong>: dossier illimitati, export ZIP/PDF, supporto prioritario.</li>
+                   </ul>
+                   <p><strong>Fatturazione e rinnovo</strong> (Apple Media Services): addebito sull'Apple ID, rinnovo automatico, disattivabile almeno 24 h prima. Gestisci in Apple ID &gt; Abbonamenti o tramite <a href="${manageLink}">questo link Apple</a>.</p>
+                   <ol>
+                        <li>Apri l'App Store su iPhone/iPad.</li>
+                        <li>Profilo (in alto a destra) &gt; <em>Abbonamenti</em>.</li>
+                        <li>Seleziona <em>ParcelProof</em> e scegli <em>Annulla</em> o cambia piano.</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "Informativa Privacy",
+            body: `<p><strong>Ultimo aggiornamento:</strong> 27 novembre 2025</p>
+                   <h3>Titolare del trattamento</h3>
+                   <p>Thomas PIQUEPAILLE — Bordeaux, Francia<br>Email: support@parcelproof.app</p>
+                   <h3>Approccio local-first</h3>
+                   <p>Nessun dato raccolto su server: video e dossier restano sul dispositivo.</p>
+                   <h3>Permessi</h3>
+                   <ul>
+                        <li><strong>Fotocamera:</strong> registrare le prove.</li>
+                        <li><strong>Microfono:</strong> audio opzionale.</li>
+                        <li><strong>Foto / File:</strong> solo in export o salvataggio.</li>
+                   </ul>
+                   <h3>Servizi terzi</h3>
+                   <p>Usiamo <strong>Apple StoreKit</strong> per gli acquisti secondo le regole Apple.</p>
+                   <h3>Cancellazione dati</h3>
+                   <p>Disinstallando l'app elimini tutti i dati ParcelProof dal dispositivo. Puoi eliminare i dossier anche dall'app.</p>`
+        },
+        terms: {
+            title: "Termini d'Uso (EULA)",
+            body: `<h3>Oggetto</h3>
+                   <p>ParcelProof fornisce prove con marca temporale. Non è garantita l'accettazione da terzi.</p>
+                   <h3>Licenza</h3>
+                   <p>L'app è soggetta alla <a href="${appleEula}">EULA standard Apple</a> e ai <a href="${appleMinterms}">Termini Apple Media Services</a>.</p>
+                   <h3>Responsabilità</h3>
+                   <p>Sei responsabile dei contenuti registrati. Nessuna responsabilità per perdita di dati locali.</p>
+                   <h3>Abbonamenti</h3>
+                   <p>Addebito via Apple. Disattiva il rinnovo automatico almeno 24 h prima della scadenza.</p>
+                   <h3>Legge applicabile</h3>
+                   <p>Diritto francese. Foro competente: Bordeaux.</p>`
+        },
+        legal: {
+            title: "Note Legali",
+            body: `<p><strong>Editore:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Contatto:</strong> support@parcelproof.app</p>
+                   <p><strong>Indirizzo:</strong> Bordeaux, Francia</p>
+                   <p><strong>Hosting:</strong> Autogestito (NAS Synology)</p>`
+        },
+        footer: "© 2025 ParcelProof. Tutti i diritti riservati."
+    },
+    nl: {
+        appName: "ParcelProof",
+        subtitle: "Beveilig je zendingen en ontvangsten met lokale videobewijs.",
+        support: {
+            title: "Support & Hulp",
+            body: `<p>Hulp nodig, een bug gevonden of een idee? Laat het ons weten.</p>
+                   <p>We antwoorden meestal binnen 48 uur.</p>`,
+            cta: "Contact opnemen"
+        },
+        subscription: {
+            title: "Abonnement & Annuleren",
+            body: `<p><strong>Pakketten</strong></p>
+                   <ul>
+                        <li><strong>Gratis</strong>: tot 3 concept-dossiers.</li>
+                        <li><strong>ParcelProof+</strong>: onbeperkte dossiers, ZIP/PDF-export, prioriteits­support.</li>
+                   </ul>
+                   <p><strong>Facturatie & verlenging</strong> (Apple Media Services): afschrijving via je Apple-ID, automatische verlenging, opzegbaar minimaal 24 u vooraf. Beheer via Apple-ID &gt; Abonnementen of via <a href="${manageLink}">deze Apple-link</a>.</p>
+                   <ol>
+                        <li>Open de App Store op je iPhone/iPad.</li>
+                        <li>Profiel (rechtsboven) &gt; <em>Abonnementen</em>.</li>
+                        <li>Kies <em>ParcelProof</em> en selecteer <em>Annuleren</em> of wijzig het plan.</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "Privacybeleid",
+            body: `<p><strong>Laatst bijgewerkt:</strong> 27 november 2025</p>
+                   <h3>Verantwoordelijke</h3>
+                   <p>Thomas PIQUEPAILLE — Bordeaux, Frankrijk<br>Email: support@parcelproof.app</p>
+                   <h3>Local-first</h3>
+                   <p>Geen servercollectie: video's en dossiers blijven op het toestel.</p>
+                   <h3>Toestemmingen</h3>
+                   <ul>
+                        <li><strong>Camera:</strong> bewijsopnames.</li>
+                        <li><strong>Microfoon:</strong> optioneel geluid.</li>
+                        <li><strong>Foto's / Bestanden:</strong> enkel bij export of opslag.</li>
+                   </ul>
+                   <h3>Derden</h3>
+                   <p>We gebruiken <strong>Apple StoreKit</strong> voor aankopen volgens de regels van Apple.</p>
+                   <h3>Gegevens wissen</h3>
+                   <p>Verwijder je de app, dan verdwijnen alle ParcelProof-gegevens van het toestel. Je kunt dossiers ook in de app verwijderen.</p>`
+        },
+        terms: {
+            title: "Gebruiksvoorwaarden (EULA)",
+            body: `<h3>Doel</h3>
+                   <p>ParcelProof levert tijdgestempeld bewijs. Acceptatie door derden is niet gegarandeerd.</p>
+                   <h3>Licentie</h3>
+                   <p>De app valt onder de <a href="${appleEula}">Apple-standaard EULA</a> en de <a href="${appleMinterms}">Apple Media Services-voorwaarden</a>.</p>
+                   <h3>Aansprakelijkheid</h3>
+                   <p>Je bent verantwoordelijk voor je opnames. Geen aansprakelijkheid voor lokaal dataverlies.</p>
+                   <h3>Abonnementen</h3>
+                   <p>Facturering via Apple. Schakel automatische verlenging minstens 24 u voor afloop uit.</p>
+                   <h3>Toepasselijk recht</h3>
+                   <p>Frans recht, rechtbank Bordeaux.</p>`
+        },
+        legal: {
+            title: "Wettelijke vermeldingen",
+            body: `<p><strong>Uitgever:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Contact:</strong> support@parcelproof.app</p>
+                   <p><strong>Adres:</strong> Bordeaux, Frankrijk</p>
+                   <p><strong>Hosting:</strong> Zelf gehost (Synology NAS)</p>`
+        },
+        footer: "© 2025 ParcelProof. Alle rechten voorbehouden."
+    },
+    pt: {
+        appName: "ParcelProof",
+        subtitle: "Proteja envios e receções com provas em vídeo locais.",
+        support: {
+            title: "Suporte & Ajuda",
+            body: `<p>Precisa de ajuda, encontrou um erro ou tem uma sugestão? Estamos aqui.</p>
+                   <p>Respondemos à maioria dos emails em 48 h.</p>`,
+            cta: "Contactar suporte"
+        },
+        subscription: {
+            title: "Subscrição e Cancelamento",
+            body: `<p><strong>Planos</strong></p>
+                   <ul>
+                        <li><strong>Gratuito</strong>: até 3 dossiês em rascunho.</li>
+                        <li><strong>ParcelProof+</strong>: dossiês ilimitados, exportação ZIP/PDF, suporte prioritário.</li>
+                   </ul>
+                   <p><strong>Cobrança e renovação</strong> (Apple Media Services): subscrições são faturadas ao seu Apple ID, renovam automaticamente e podem ser canceladas com 24 h de antecedência. Gerir em Apple ID &gt; Subscrições ou através <a href="${manageLink}">deste link Apple</a>.</p>
+                   <ol>
+                        <li>Abra a App Store no iPhone/iPad.</li>
+                        <li>Perfil (canto superior direito) &gt; <em>Subscrições</em>.</li>
+                        <li>Escolha <em>ParcelProof</em> e clique em <em>Cancelar</em> ou altere o plano.</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "Política de Privacidade",
+            body: `<p><strong>Última atualização:</strong> 27 de novembro de 2025</p>
+                   <h3>Responsável pelo tratamento</h3>
+                   <p>Thomas PIQUEPAILLE — Bordéus, França<br>Email: support@parcelproof.app</p>
+                   <h3>Local-first</h3>
+                   <p>Não recolhemos dados em servidores. Vídeos e dossiês permanecem no dispositivo.</p>
+                   <h3>Permissões</h3>
+                   <ul>
+                        <li><strong>Câmara:</strong> gravar provas.</li>
+                        <li><strong>Microfone:</strong> áudio opcional.</li>
+                        <li><strong>Fotos / Ficheiros:</strong> apenas em exportação ou gravação.</li>
+                   </ul>
+                   <h3>Serviços terceiros</h3>
+                   <p>Usamos <strong>Apple StoreKit</strong> para pagamentos, seguindo as regras da Apple.</p>
+                   <h3>Eliminação de dados</h3>
+                   <p>Ao desinstalar a app, todos os dados ParcelProof são removidos do dispositivo. Pode eliminar dossiês também na app.</p>`
+        },
+        terms: {
+            title: "Termos de Utilização (EULA)",
+            body: `<h3>Objeto</h3>
+                   <p>ParcelProof fornece provas com carimbo temporal. A aceitação por terceiros não é garantida.</p>
+                   <h3>Licença</h3>
+                   <p>A app está sob a <a href="${appleEula}">EULA padrão da Apple</a> e os <a href="${appleMinterms}">Termos Apple Media Services</a>.</p>
+                   <h3>Responsabilidade</h3>
+                   <p>É responsável pelo conteúdo gravado. Sem responsabilidade por perda de dados locais.</p>
+                   <h3>Subscrições</h3>
+                   <p>Faturação via Apple. Desative a renovação automática pelo menos 24 h antes do termo.</p>
+                   <h3>Lei aplicável</h3>
+                   <p>Direito francês. Tribunal de Bordéus.</p>`
+        },
+        legal: {
+            title: "Informações Legais",
+            body: `<p><strong>Editora:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>Contacto:</strong> support@parcelproof.app</p>
+                   <p><strong>Endereço:</strong> Bordéus, França</p>
+                   <p><strong>Alojamento:</strong> Auto-hospedado (NAS Synology)</p>`
+        },
+        footer: "© 2025 ParcelProof. Todos os direitos reservados."
+    },
+    ja: {
+        appName: "ParcelProof",
+        subtitle: "荷物の発送・受取をローカル動画で確実に記録します。",
+        support: {
+            title: "サポート",
+            body: `<p>アプリの不具合やご要望はお気軽にご連絡ください。</p>
+                   <p>通常48時間以内に返信します。</p>`,
+            cta: "サポートに連絡"
+        },
+        subscription: {
+            title: "サブスクリプションと解約",
+            body: `<p><strong>プラン</strong></p>
+                   <ul>
+                        <li><strong>無料</strong>: 下書き3件まで。</li>
+                        <li><strong>ParcelProof+</strong>: 無制限、ZIP/PDFエクスポート、優先サポート。</li>
+                   </ul>
+                   <p><strong>請求と自動更新</strong>（Apple Media Services）：Apple IDに請求され、自動更新されます。更新の24時間前までに解約できます。Apple IDの「サブスクリプション」または<a href="${manageLink}">このAppleリンク</a>から管理してください。</p>
+                   <ol>
+                        <li>iPhone/iPadでApp Storeを開く。</li>
+                        <li>プロフィール（右上）&gt; <em>サブスクリプション</em>。</li>
+                        <li><em>ParcelProof</em>を選び、<em>キャンセル</em>またはプラン変更。</li>
+                   </ol>`
+        },
+        privacy: {
+            title: "プライバシーポリシー",
+            body: `<p><strong>最終更新日:</strong> 2025年11月27日</p>
+                   <h3>管理者</h3>
+                   <p>Thomas PIQUEPAILLE — フランス・ボルドー<br>Email: support@parcelproof.app</p>
+                   <h3>ローカル優先</h3>
+                   <p>サーバーで個人データを収集しません。動画・ドシエは端末内に保存されます。</p>
+                   <h3>権限</h3>
+                   <ul>
+                        <li><strong>カメラ:</strong> 証拠撮影。</li>
+                        <li><strong>マイク:</strong> 任意の音声録音。</li>
+                        <li><strong>写真 / ファイル:</strong> エクスポートや保存時のみ。</li>
+                   </ul>
+                   <h3>サードパーティ</h3>
+                   <p><strong>Apple StoreKit</strong>で購入処理を行い、Appleのセキュリティ/プライバシー規約に従います。</p>
+                   <h3>データ削除</h3>
+                   <p>アプリを削除すると端末内のParcelProofデータも削除されます。アプリ内で個別に削除することもできます。</p>`
+        },
+        terms: {
+            title: "利用規約 (EULA)",
+            body: `<h3>目的</h3>
+                   <p>ParcelProofは発送・受取の証拠を記録するツールです。第三者による証拠の受理は保証されません。</p>
+                   <h3>ライセンス</h3>
+                   <p>アプリは<a href="${appleEula}">Apple標準EULA</a>および<a href="${appleMinterms}">Apple Media Services利用規約</a>に従います。</p>
+                   <h3>責任</h3>
+                   <p>記録内容の責任はユーザーにあります。端末障害や削除によるローカルデータ損失について責任を負いません。</p>
+                   <h3>サブスクリプション</h3>
+                   <p>Apple経由で課金され、自動更新を24時間前までにオフにできます。</p>
+                   <h3>準拠法</h3>
+                   <p>フランス法を適用し、ボルドーの裁判所が専属管轄します。</p>`
+        },
+        legal: {
+            title: "法的通知",
+            body: `<p><strong>発行者:</strong> Thomas PIQUEPAILLE</p>
+                   <p><strong>連絡先:</strong> support@parcelproof.app</p>
+                   <p><strong>住所:</strong> フランス・ボルドー</p>
+                   <p><strong>ホスティング:</strong> 自家ホスト (Synology NAS)</p>`
+        },
+        footer: "© 2025 ParcelProof. All rights reserved."
+    }
+};
+
+function applyLanguage(lang) {
+    const locale = translations[lang] ? lang : "en";
+    document.documentElement.lang = locale;
+    const t = translations[locale];
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const keyPath = el.dataset.i18n.split(".");
+        let value = t;
+        keyPath.forEach(k => value = value?.[k]);
+        if (typeof value === "string") {
+            el.innerHTML = value;
+        }
+    });
+    const select = document.getElementById("language-switcher");
+    if (select && select.value !== locale) {
+        select.value = locale;
+    }
+    const supportLink = document.getElementById("support-link");
+    if (supportLink) {
+        supportLink.href = supportMail;
+    }
+}
+
+const userLang = (navigator.language || "en").slice(0, 2).toLowerCase();
+applyLanguage(translations[userLang] ? userLang : "en");
+document.getElementById("language-switcher").addEventListener("change", (e) => {
+    applyLanguage(e.target.value);
+});
+</script>
 
 </body>
 </html>
